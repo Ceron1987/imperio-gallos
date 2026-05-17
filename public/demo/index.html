@@ -3477,7 +3477,7 @@
             document.getElementById('campoMesPago').style.display = 'block';
 
             // Mostrar notificación y preguntar si quiere registrar otro
-            mostrarNotificacion('💰 Pago registrado exitosamente');
+            showNotification('💰 Pago registrado exitosamente');
 
             setTimeout(() => {
                 if (confirm('✅ Pago registrado correctamente.\n\n¿Deseas registrar otro pago?')) {
@@ -4125,7 +4125,7 @@
             event.target.reset();
 
             cargarTorneos();
-            mostrarNotificacion('🏆 Torneo creado exitosamente');
+            showNotification('🏆 Torneo creado exitosamente');
         }
 
         function cargarTorneos() {
@@ -4252,7 +4252,7 @@
             }
 
             if (torneoEditando.alumnos.includes(alumnoId)) {
-                mostrarNotificacion('⚠️ El alumno ya está inscrito');
+                showNotification('⚠️ El alumno ya está inscrito');
                 return;
             }
 
@@ -4267,7 +4267,7 @@
 
             cargarAlumnosParaTorneo();
             actualizarAlumnosInscritos();
-            mostrarNotificacion('✅ Alumno agregado al torneo');
+            showNotification('✅ Alumno agregado al torneo');
         }
 
         function quitarAlumnoDeTorneo(alumnoId) {
@@ -4284,7 +4284,7 @@
 
             cargarAlumnosParaTorneo();
             actualizarAlumnosInscritos();
-            mostrarNotificacion('➖ Alumno removido del torneo');
+            showNotification('➖ Alumno removido del torneo');
         }
 
         function actualizarAlumnosInscritos() {
@@ -4326,7 +4326,7 @@
             localStorage.setItem('torneos', JSON.stringify(torneos));
 
             cargarTorneos();
-            mostrarNotificacion('🗑️ Torneo eliminado');
+            showNotification('🗑️ Torneo eliminado');
         }
 
         // Inscripción masiva a torneo
@@ -4673,7 +4673,7 @@
             const totalMarcados = Object.keys(asistenciasDelDia).length;
 
             if (totalMarcados === 0) {
-                mostrarNotificacion('⚠️ No has marcado ninguna asistencia');
+                showNotification('⚠️ No has marcado ninguna asistencia');
                 return;
             }
 
@@ -4693,7 +4693,7 @@
             const presentes = Object.values(asistenciasDelDia).filter(p => p === true).length;
             const ausentes = Object.values(asistenciasDelDia).filter(p => p === false).length;
 
-            mostrarNotificacion(`✅ Asistencias guardadas: ${presentes} presentes, ${ausentes} ausentes`);
+            showNotification(`✅ Asistencias guardadas: ${presentes} presentes, ${ausentes} ausentes`);
 
             // Limpiar estado
             asistenciasDelDia = {};
