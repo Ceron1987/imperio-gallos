@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema profesional de gestión para academias deportivas - Imperio Gallos Gallos Blancos de Querétaro">
     <meta name="theme-color" content="#1e40af">
-    <link rel="manifest" href="./imperio-gallos-manifest.json">
-    <link rel="icon" href="./imperio-gallos-logo.jpg" type="image/jpeg">
+    <link rel="manifest" href="/demo/imperio-gallos-manifest.json">
+    <link rel="icon" href="/demo/imperio-gallos-logo.jpg" type="image/jpeg">
     <title>Imperio Gallos - Sistema de Gestión Deportiva Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
@@ -988,6 +988,197 @@
             position: relative;
             z-index: 1;
         }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+
+        /* MOBILE: 320px - 767px */
+        @media (max-width: 767px) {
+            /* Sidebar colapsable */
+            .sidebar {
+                position: fixed;
+                left: -280px;
+                transition: left 0.3s ease;
+                z-index: 1000;
+            }
+
+            .sidebar.active {
+                left: 0;
+            }
+
+            /* Main content full width */
+            .main-content {
+                margin-left: 0 !important;
+                padding: 1rem;
+            }
+
+            /* Stats cards en columna */
+            .stats-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem;
+            }
+
+            /* Botones más grandes para touch */
+            .btn, button, .action-btn {
+                min-height: 44px;
+                padding: 0.75rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            /* Inputs más grandes, evita zoom iOS */
+            input, select, textarea {
+                font-size: 16px !important;
+                min-height: 44px;
+            }
+
+            /* Modales ocupan 95% */
+            .modal-content {
+                width: 95% !important;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+
+            /* Tablas scrollables */
+            .table-container {
+                overflow-x: auto;
+                -webkit-overflow-scrolling: touch;
+            }
+
+            table {
+                min-width: 600px;
+            }
+
+            /* Landing page */
+            .hero h1 {
+                font-size: 2rem !important;
+            }
+
+            .hero p {
+                font-size: 1rem !important;
+            }
+
+            /* Navegación bottom bar móvil */
+            .mobile-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                background: linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%);
+                padding: 0.5rem;
+                justify-content: space-around;
+                z-index: 999;
+                box-shadow: 0 -4px 20px rgba(0,0,0,0.3);
+            }
+
+            .mobile-nav-item {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                color: white;
+                font-size: 0.75rem;
+                padding: 0.5rem;
+                text-decoration: none;
+            }
+
+            .mobile-nav-item i {
+                font-size: 1.5rem;
+                margin-bottom: 0.25rem;
+            }
+
+            /* Ocultar sidebar en móvil, mostrar bottom nav */
+            body.app-view .sidebar {
+                display: none;
+            }
+
+            /* Ajustar padding bottom para bottom nav */
+            body.app-view {
+                padding-bottom: 70px;
+            }
+
+            /* Header más compacto */
+            .app-header {
+                padding: 1rem !important;
+            }
+
+            .app-header h1 {
+                font-size: 1.5rem !important;
+            }
+
+            /* Grids a 1 columna */
+            .grid-cols-2, .grid-cols-3, .grid-cols-4 {
+                grid-template-columns: 1fr !important;
+            }
+
+            /* Formularios más espaciados */
+            .form-grid {
+                gap: 1.5rem;
+            }
+
+            /* Calendario más pequeño */
+            .calendar-day {
+                min-height: 40px;
+                font-size: 0.75rem;
+            }
+        }
+
+        /* TABLET: 768px - 1023px */
+        @media (min-width: 768px) and (max-width: 1023px) {
+            /* Sidebar más estrecho */
+            .sidebar {
+                width: 220px;
+            }
+
+            .main-content {
+                margin-left: 220px;
+            }
+
+            /* Stats cards en 2 columnas */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Tablas ajustadas */
+            .table-container {
+                overflow-x: auto;
+            }
+
+            /* Modales 80% */
+            .modal-content {
+                width: 80% !important;
+            }
+
+            /* Font sizes ajustados */
+            h1 { font-size: 2rem !important; }
+            h2 { font-size: 1.5rem !important; }
+            h3 { font-size: 1.25rem !important; }
+
+            /* Padding reducido */
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            /* Grids 2 columnas */
+            .grid-cols-3, .grid-cols-4 {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+        }
+
+        /* DESKTOP: 1024px+ */
+        @media (min-width: 1024px) {
+            /* Layout normal, ya optimizado */
+            .mobile-nav {
+                display: none;
+            }
+        }
+
+        /* Utilidades responsive */
+        .hide-mobile { display: block; }
+        .show-mobile { display: none; }
+
+        @media (max-width: 767px) {
+            .hide-mobile { display: none !important; }
+            .show-mobile { display: block !important; }
+        }
     </style>
 </head>
 <body>
@@ -1010,7 +1201,7 @@
                         <div class="logo-container">
                             <div class="logo-glow"></div>
                             <div style="width: 70px; height: 70px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.3); padding: 5px;">
-                                <img src="imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                                <img src="/demo/imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
                             </div>
                         </div>
                         <div>
@@ -1031,7 +1222,7 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                     <!-- Flyer Portada Principal -->
                     <div style="display: flex; justify-content: center;">
-                        <img src="imperio-gallos-promo.jpg" alt="Imperio Gallos - Centro de Formación" style="width: 100%; max-width: 600px; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); border: 6px solid #10b981; transform: rotate(-2deg); transition: transform 0.3s ease;" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-2deg) scale(1)'">
+                        <img src="/demo/imperio-gallos-promo.jpg" alt="Imperio Gallos - Centro de Formación" style="width: 100%; max-width: 600px; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); border: 6px solid #10b981; transform: rotate(-2deg); transition: transform 0.3s ease;" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-2deg) scale(1)'">
                     </div>
 
                     <!-- Info y CTA -->
@@ -1203,7 +1394,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; height: 90px; position: relative; z-10;">
                     <div style="display: flex; align-items: center; gap: 1.5rem;">
                         <div class="bounce-icon" style="width: 70px; height: 70px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 3px solid #10b981; padding: 5px;">
-                            <img src="imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                            <img src="/demo/imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
                         </div>
                         <div>
                             <div style="font-size: 1.75rem; font-weight: 900; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
@@ -1735,6 +1926,45 @@
                                 <div style="width: 20px; height: 20px; background: #dc2626; border-radius: 6px;"></div>
                                 <span style="font-size: 0.95rem; color: #6b7280;">Baja (-70%)</span>
                             </div>
+                        </div>
+                    </div>
+
+                    <!-- Pasar Lista del Día -->
+                    <div style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 2rem;">
+                        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+                            <h3 style="font-size: 1.25rem; font-weight: 700;">
+                                <i class="fas fa-clipboard-list"></i> Pasar Lista del Día
+                            </h3>
+                            <div style="display: flex; gap: 1rem;">
+                                <select id="filtroSedeAsistencia" style="padding: 0.5rem 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 0.95rem;">
+                                    <option value="">Todas las sedes</option>
+                                    <option value="Imperio Gallos Del Sol">Del Sol</option>
+                                    <option value="Imperio Gallos Del Tintero">Del Tintero</option>
+                                    <option value="Imperio Gallos TBD">TBD</option>
+                                </select>
+                                <select id="filtroCategoriaAsistencia" style="padding: 0.5rem 1rem; border: 2px solid #e5e7eb; border-radius: 8px; font-size: 0.95rem;">
+                                    <option value="">Todas las categorías</option>
+                                    <option value="Junior">Junior</option>
+                                    <option value="Infantil">Infantil</option>
+                                    <option value="Juvenil">Juvenil</option>
+                                    <option value="Femenil">Femenil</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div id="listaAsistenciaAlumnos" style="max-height: 400px; overflow-y: auto;">
+                            <p style="text-align: center; color: #9ca3af; padding: 3rem 0;">
+                                Agrega alumnos para pasar lista
+                            </p>
+                        </div>
+
+                        <div style="margin-top: 1.5rem; padding-top: 1.5rem; border-top: 2px solid #f1f5f9; display: flex; justify-content: space-between; align-items: center;">
+                            <div style="color: #6b7280; font-size: 0.95rem;">
+                                <span id="contadorPresentes">0</span> presentes • <span id="contadorAusentes">0</span> ausentes
+                            </div>
+                            <button onclick="guardarAsistenciasDelDia()" class="btn-primary">
+                                <i class="fas fa-save"></i> Guardar Asistencias del Día
+                            </button>
                         </div>
                     </div>
 
@@ -2466,6 +2696,13 @@
                         </label>
                         <input type="number" id="mensualidadAlumno" required class="input-field" placeholder="800" value="800">
                     </div>
+                    <div>
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
+                            <i class="fas fa-phone"></i> Teléfono del Tutor
+                        </label>
+                        <input type="tel" id="telefonoTutor" required class="input-field" placeholder="442 123 4567" pattern="[0-9]{3}[\s]?[0-9]{3}[\s]?[0-9]{4}">
+                        <small style="color: #6b7280; font-size: 0.75rem; margin-top: 0.25rem; display: block;">Formato: 442 123 4567 (10 dígitos)</small>
+                    </div>
                 </div>
                 <div style="display: flex; gap: 1rem; margin-top: 2rem;">
                     <button type="submit" class="btn-primary" style="flex: 1;">
@@ -2964,6 +3201,7 @@
                 categoria: document.getElementById('categoriaAlumno').value,
                 sede: document.getElementById('sedeAlumno').value,
                 mensualidad: document.getElementById('mensualidadAlumno').value,
+                telefonoTutor: document.getElementById('telefonoTutor').value,
                 estado: 'Activo',
                 fechaRegistro: new Date().toISOString()
             };
@@ -4039,6 +4277,125 @@
             }, 2000);
         }
 
+        // ========== PASAR LISTA ASISTENCIAS ==========
+
+        let asistenciasDelDia = {}; // { alumnoId: true/false }
+
+        function cargarListaAsistencia() {
+            const alumnos = JSON.parse(localStorage.getItem('alumnos')) || [];
+            const filtroSede = document.getElementById('filtroSedeAsistencia').value;
+            const filtroCategoria = document.getElementById('filtroCategoriaAsistencia').value;
+
+            let alumnosFiltrados = alumnos;
+
+            if (filtroSede) {
+                alumnosFiltrados = alumnosFiltrados.filter(a => a.sede === filtroSede);
+            }
+
+            if (filtroCategoria) {
+                alumnosFiltrados = alumnosFiltrados.filter(a => a.categoria === filtroCategoria);
+            }
+
+            const container = document.getElementById('listaAsistenciaAlumnos');
+
+            if (alumnosFiltrados.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #9ca3af; padding: 3rem 0;">No hay alumnos para esta selección</p>';
+                actualizarContadoresAsistencia();
+                return;
+            }
+
+            container.innerHTML = alumnosFiltrados.map(alumno => `
+                <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; border-bottom: 1px solid #e5e7eb; hover:background: #f9fafb; transition: all 0.2s;">
+                    <div style="flex: 1;">
+                        <div style="font-weight: 600; color: #1f2937; font-size: 1rem;">${alumno.nombre}</div>
+                        <div style="font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem;">
+                            <span style="background: #dbeafe; color: #1e40af; padding: 0.25rem 0.5rem; border-radius: 6px; font-size: 0.75rem; margin-right: 0.5rem;">${alumno.categoria}</span>
+                            <span style="color: #9ca3af;">${alumno.sede}</span>
+                        </div>
+                    </div>
+                    <div style="display: flex; gap: 0.5rem;">
+                        <button
+                            onclick="marcarAsistencia(${alumno.id}, true)"
+                            class="btn-asistencia ${asistenciasDelDia[alumno.id] === true ? 'activo' : ''}"
+                            style="background: ${asistenciasDelDia[alumno.id] === true ? '#10b981' : '#f3f4f6'}; color: ${asistenciasDelDia[alumno.id] === true ? 'white' : '#6b7280'}; padding: 0.5rem 1rem; border-radius: 8px; border: 2px solid ${asistenciasDelDia[alumno.id] === true ? '#10b981' : '#e5e7eb'}; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+                        >
+                            <i class="fas fa-check"></i> Presente
+                        </button>
+                        <button
+                            onclick="marcarAsistencia(${alumno.id}, false)"
+                            class="btn-asistencia ${asistenciasDelDia[alumno.id] === false ? 'activo' : ''}"
+                            style="background: ${asistenciasDelDia[alumno.id] === false ? '#dc2626' : '#f3f4f6'}; color: ${asistenciasDelDia[alumno.id] === false ? 'white' : '#6b7280'}; padding: 0.5rem 1rem; border-radius: 8px; border: 2px solid ${asistenciasDelDia[alumno.id] === false ? '#dc2626' : '#e5e7eb'}; font-weight: 600; cursor: pointer; transition: all 0.2s;"
+                        >
+                            <i class="fas fa-times"></i> Ausente
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+
+            actualizarContadoresAsistencia();
+        }
+
+        function marcarAsistencia(alumnoId, presente) {
+            asistenciasDelDia[alumnoId] = presente;
+            cargarListaAsistencia();
+        }
+
+        function actualizarContadoresAsistencia() {
+            const presentes = Object.values(asistenciasDelDia).filter(p => p === true).length;
+            const ausentes = Object.values(asistenciasDelDia).filter(p => p === false).length;
+
+            document.getElementById('contadorPresentes').textContent = presentes;
+            document.getElementById('contadorAusentes').textContent = ausentes;
+        }
+
+        function guardarAsistenciasDelDia() {
+            const totalMarcados = Object.keys(asistenciasDelDia).length;
+
+            if (totalMarcados === 0) {
+                mostrarNotificacion('⚠️ No has marcado ninguna asistencia');
+                return;
+            }
+
+            // Guardar en localStorage con fecha actual
+            const fecha = new Date().toISOString().split('T')[0]; // YYYY-MM-DD
+            let historialAsistencias = JSON.parse(localStorage.getItem('historialAsistencias')) || {};
+
+            if (!historialAsistencias[fecha]) {
+                historialAsistencias[fecha] = {};
+            }
+
+            // Merge con asistencias del día
+            historialAsistencias[fecha] = { ...historialAsistencias[fecha], ...asistenciasDelDia };
+
+            localStorage.setItem('historialAsistencias', JSON.stringify(historialAsistencias));
+
+            const presentes = Object.values(asistenciasDelDia).filter(p => p === true).length;
+            const ausentes = Object.values(asistenciasDelDia).filter(p => p === false).length;
+
+            mostrarNotificacion(`✅ Asistencias guardadas: ${presentes} presentes, ${ausentes} ausentes`);
+
+            // Limpiar estado
+            asistenciasDelDia = {};
+            cargarListaAsistencia();
+
+            // Actualizar calendario si está visible
+            generarCalendario();
+        }
+
+        // Event listeners para filtros
+        document.addEventListener('DOMContentLoaded', function() {
+            const filtroSede = document.getElementById('filtroSedeAsistencia');
+            const filtroCategoria = document.getElementById('filtroCategoriaAsistencia');
+
+            if (filtroSede) {
+                filtroSede.addEventListener('change', cargarListaAsistencia);
+            }
+
+            if (filtroCategoria) {
+                filtroCategoria.addEventListener('change', cargarListaAsistencia);
+            }
+        });
+
         // ========== INICIALIZACIÓN ==========
         document.addEventListener('DOMContentLoaded', function() {
             loadDarkMode(); // Cargar preferencia de dark mode
@@ -4047,6 +4404,7 @@
             initCharts();
             generarCalendario();
             cargarListaAdeudos();
+            cargarListaAsistencia(); // Cargar lista de asistencia
 
             // Set current date
             document.getElementById('fechaAsistencia').textContent = new Date().toLocaleDateString('es-MX', {
