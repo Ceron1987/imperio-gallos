@@ -1,9 +1,11 @@
 // Service Worker para Imperio Gallos PWA
-const CACHE_NAME = 'imperio-gallos-v1';
+const CACHE_NAME = 'imperio-gallos-v2';
 const urlsToCache = [
-  './IMPERIO-GALLOS-PROFESIONAL.html',
-  './imperio-gallos-logo.jpg',
-  './imperio-gallos-promo.jpg'
+  '/demo/',
+  '/demo/index.html',
+  '/demo/imperio-gallos-logo.jpg',
+  '/demo/imperio-gallos-promo.jpg',
+  '/demo/presentacion.html'
 ];
 
 // Instalación

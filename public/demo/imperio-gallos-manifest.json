@@ -2,20 +2,20 @@
   "name": "Imperio Gallos - Sistema de Gestión Deportiva",
   "short_name": "Imperio Gallos",
   "description": "Sistema profesional de gestión para academia deportiva Imperio Gallos - Gallos Blancos de Querétaro",
-  "start_url": "./IMPERIO-GALLOS-PROFESIONAL.html",
+  "start_url": "/demo/",
   "display": "standalone",
   "background_color": "#1e40af",
   "theme_color": "#1e40af",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "./imperio-gallos-logo.jpg",
+      "src": "/demo/imperio-gallos-logo.jpg",
       "sizes": "192x192",
       "type": "image/jpeg",
       "purpose": "any maskable"
     },
     {
-      "src": "./imperio-gallos-logo.jpg",
+      "src": "/demo/imperio-gallos-logo.jpg",
       "sizes": "512x512",
       "type": "image/jpeg",
       "purpose": "any maskable"
@@ -24,10 +24,10 @@
   "categories": ["sports", "education", "productivity"],
   "lang": "es-MX",
   "dir": "ltr",
-  "scope": "./",
+  "scope": "/demo/",
   "screenshots": [
     {
-      "src": "./imperio-gallos-promo.jpg",
+      "src": "/demo/imperio-gallos-promo.jpg",
       "sizes": "1280x720",
       "type": "image/jpeg",
       "label": "Dashboard Principal Imperio Gallos"
