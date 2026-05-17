@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Sistema profesional de gestión para academias deportivas - Imperio Gallos Gallos Blancos de Querétaro">
     <meta name="theme-color" content="#1e40af">
-    <link rel="manifest" href="/demo/imperio-gallos-manifest.json">
-    <link rel="icon" href="/demo/imperio-gallos-logo.jpg" type="image/jpeg">
+    <link rel="manifest" href="./imperio-gallos-manifest.json">
+    <link rel="icon" href="./imperio-gallos-logo.jpg" type="image/jpeg">
     <title>Imperio Gallos - Sistema de Gestión Deportiva Pro</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.js"></script>
@@ -1010,7 +1010,7 @@
                         <div class="logo-container">
                             <div class="logo-glow"></div>
                             <div style="width: 70px; height: 70px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 8px 30px rgba(0,0,0,0.3); padding: 5px;">
-                                <img src="/demo/imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                                <img src="imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
                             </div>
                         </div>
                         <div>
@@ -1031,7 +1031,7 @@
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
                     <!-- Flyer Portada Principal -->
                     <div style="display: flex; justify-content: center;">
-                        <img src="/demo/imperio-gallos-promo.jpg" alt="Imperio Gallos - Centro de Formación" style="width: 100%; max-width: 600px; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); border: 6px solid #10b981; transform: rotate(-2deg); transition: transform 0.3s ease;" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-2deg) scale(1)'">
+                        <img src="imperio-gallos-promo.jpg" alt="Imperio Gallos - Centro de Formación" style="width: 100%; max-width: 600px; border-radius: 24px; box-shadow: 0 30px 80px rgba(0,0,0,0.6); border: 6px solid #10b981; transform: rotate(-2deg); transition: transform 0.3s ease;" onmouseover="this.style.transform='rotate(0deg) scale(1.05)'" onmouseout="this.style.transform='rotate(-2deg) scale(1)'">
                     </div>
 
                     <!-- Info y CTA -->
@@ -1203,7 +1203,7 @@
                 <div style="display: flex; justify-content: space-between; align-items: center; height: 90px; position: relative; z-10;">
                     <div style="display: flex; align-items: center; gap: 1.5rem;">
                         <div class="bounce-icon" style="width: 70px; height: 70px; background: white; border-radius: 12px; display: flex; align-items: center; justify-content: center; box-shadow: 0 8px 25px rgba(0,0,0,0.3); border: 3px solid #10b981; padding: 5px;">
-                            <img src="/demo/imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
+                            <img src="imperio-gallos-logo.jpg" alt="Imperio Gallos" style="width: 100%; height: 100%; object-fit: contain; border-radius: 8px;">
                         </div>
                         <div>
                             <div style="font-size: 1.75rem; font-weight: 900; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);">
@@ -1777,6 +1777,71 @@
                         <div style="background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); border-left: 4px solid #dc2626; padding: 2rem; border-radius: 12px;">
                             <div style="font-size: 0.875rem; color: #991b1b; font-weight: 700; margin-bottom: 0.5rem;">VENCIDOS</div>
                             <div style="font-size: 3rem; font-weight: 800; color: #dc2626; font-family: 'Poppins', sans-serif;" id="pagosVencidos">0</div>
+                        </div>
+                    </div>
+
+                    <!-- Filtros de Pagos -->
+                    <div style="background: white; border-radius: 16px; padding: 2rem; box-shadow: 0 4px 20px rgba(0,0,0,0.08); margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 1.5rem;">
+                            <i class="fas fa-filter"></i> Filtros de Búsqueda
+                        </h3>
+                        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
+                                    <i class="fas fa-building"></i> Sede
+                                </label>
+                                <select id="filtroSedePagos" onchange="filtrarPagos()" class="input-field">
+                                    <option value="">Todas las sedes</option>
+                                    <option value="Del Sol">Imperio Gallos Del Sol</option>
+                                    <option value="Del Tintero">Imperio Gallos Del Tintero</option>
+                                    <option value="TBD">Imperio Gallos TBD</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
+                                    <i class="fas fa-check-circle"></i> Estado
+                                </label>
+                                <select id="filtroEstadoPagos" onchange="filtrarPagos()" class="input-field">
+                                    <option value="">Todos</option>
+                                    <option value="aldia">Al Día ✓</option>
+                                    <option value="pendiente">Con Adeudo ⚠️</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
+                                    <i class="fas fa-calendar"></i> Mes
+                                </label>
+                                <select id="filtroMesPagos" onchange="filtrarPagos()" class="input-field">
+                                    <option value="">Todos los meses</option>
+                                    <option value="enero">Enero</option>
+                                    <option value="febrero">Febrero</option>
+                                    <option value="marzo">Marzo</option>
+                                    <option value="abril">Abril</option>
+                                    <option value="mayo">Mayo</option>
+                                    <option value="junio">Junio</option>
+                                    <option value="julio">Julio</option>
+                                    <option value="agosto">Agosto</option>
+                                    <option value="septiembre">Septiembre</option>
+                                    <option value="octubre">Octubre</option>
+                                    <option value="noviembre">Noviembre</option>
+                                    <option value="diciembre">Diciembre</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
+                                    <i class="fas fa-search"></i> Buscar Alumno
+                                </label>
+                                <input type="text" id="buscarPagos" onkeyup="filtrarPagos()" placeholder="Nombre del alumno..." class="input-field">
+                            </div>
+                        </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 1rem;">
+                            <button onclick="limpiarFiltrosPagos()" class="btn-secondary" style="padding: 0.75rem 1.5rem; font-size: 0.875rem;">
+                                <i class="fas fa-redo"></i> Limpiar Filtros
+                            </button>
+                            <div style="flex: 1;"></div>
+                            <span id="resultadosPagos" style="color: #6b7280; font-size: 0.875rem; align-self: center;">
+                                <!-- Se llena con JS -->
+                            </span>
                         </div>
                     </div>
 
@@ -3459,6 +3524,78 @@
                     window.open(`https://wa.me/525650234472?text=${mensaje}`, '_blank');
                 }, 500);
             }
+        }
+
+        // Filtrado de pagos
+        function filtrarPagos() {
+            const sede = document.getElementById('filtroSedePagos').value.toLowerCase();
+            const estado = document.getElementById('filtroEstadoPagos').value;
+            const mes = document.getElementById('filtroMesPagos').value.toLowerCase();
+            const busqueda = document.getElementById('buscarPagos').value.toLowerCase();
+
+            const alumnos = JSON.parse(localStorage.getItem('alumnos')) || [];
+            let filtrados = alumnos;
+
+            // Filtrar por sede
+            if (sede) {
+                filtrados = filtrados.filter(a => a.sede.toLowerCase().includes(sede));
+            }
+
+            // Filtrar por búsqueda de nombre
+            if (busqueda) {
+                filtrados = filtrados.filter(a => a.nombre.toLowerCase().includes(busqueda));
+            }
+
+            // Filtrar por estado de pago
+            if (estado === 'aldia') {
+                filtrados = filtrados.filter(a => !a.adeudo || a.adeudo === 0);
+            } else if (estado === 'pendiente') {
+                filtrados = filtrados.filter(a => a.adeudo && a.adeudo > 0);
+            }
+
+            // Actualizar tabla de adeudos
+            const tablaAdeudos = document.getElementById('tablaAdeudos');
+            const adeudos = filtrados.filter(a => a.adeudo && a.adeudo > 0);
+
+            if (adeudos.length === 0) {
+                tablaAdeudos.innerHTML = `
+                    <tr>
+                        <td colspan="5" style="text-align: center; color: #9ca3af; padding: 3rem;">
+                            ${busqueda || sede || mes ? '❌ No se encontraron resultados con los filtros aplicados' : '¡Excelente! No hay adeudos pendientes'}
+                        </td>
+                    </tr>
+                `;
+            } else {
+                tablaAdeudos.innerHTML = adeudos.map(alumno => `
+                    <tr>
+                        <td style="font-weight: 600;">${alumno.nombre}</td>
+                        <td>${alumno.categoria}</td>
+                        <td style="color: #dc2626; font-weight: 700;">$${alumno.adeudo.toLocaleString()} MXN</td>
+                        <td>${Math.ceil(alumno.adeudo / 800)} mes(es)</td>
+                        <td>
+                            <button onclick="marcarPagado('${alumno.id}')" class="btn-primary" style="padding: 0.5rem 1rem; font-size: 0.75rem;">
+                                <i class="fas fa-check"></i> Marcar Pagado
+                            </button>
+                            <button onclick="enviarRecordatorioPago('${alumno.nombre}')" class="btn-secondary" style="padding: 0.5rem 1rem; font-size: 0.75rem; margin-left: 0.5rem;">
+                                <i class="fab fa-whatsapp"></i> Recordar
+                            </button>
+                        </td>
+                    </tr>
+                `).join('');
+            }
+
+            // Actualizar contador de resultados
+            document.getElementById('resultadosPagos').textContent =
+                `Mostrando ${filtrados.length} de ${alumnos.length} alumnos | ${adeudos.length} con adeudo`;
+        }
+
+        function limpiarFiltrosPagos() {
+            document.getElementById('filtroSedePagos').value = '';
+            document.getElementById('filtroEstadoPagos').value = '';
+            document.getElementById('filtroMesPagos').value = '';
+            document.getElementById('buscarPagos').value = '';
+            filtrarPagos();
+            showNotification('🔄 Filtros limpiados');
         }
 
         // Calendario de asistencias
