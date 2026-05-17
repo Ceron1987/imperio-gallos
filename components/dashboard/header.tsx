@@ -38,8 +38,8 @@ export function Header({ user }: HeaderProps) {
 
         {/* User Menu */}
         <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="flex items-center gap-2">
+          <DropdownMenuTrigger>
+            <div className="flex items-center gap-2 rounded-md px-3 py-2 hover:bg-gray-100 cursor-pointer">
               <div className="flex h-8 w-8 items-center justify-center rounded-full bg-red-600 text-white">
                 <User className="h-4 w-4" />
               </div>
@@ -47,7 +47,7 @@ export function Header({ user }: HeaderProps) {
                 <div className="text-sm font-medium">{user.nombre_completo}</div>
                 <div className="text-xs text-gray-500">{getRoleDisplayName(user.rol)}</div>
               </div>
-            </Button>
+            </div>
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-56">
             <DropdownMenuLabel>Mi Cuenta</DropdownMenuLabel>

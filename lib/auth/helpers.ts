@@ -1,7 +1,7 @@
 // Imperio Gallos - Auth Helpers
 // Funciones para manejo de autenticación y roles
 
-import { createClient } from '@/lib/supabase/server'
+// import { createClient } from '@/lib/supabase/server'
 import type { UserRole, Usuario } from '@/lib/types/database.types'
 import { MOCK_USUARIOS } from '@/lib/data/mock-data'
 
