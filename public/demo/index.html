@@ -2736,11 +2736,31 @@
                         <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
                             <i class="fas fa-file-invoice"></i> Concepto
                         </label>
-                        <select id="conceptoPago" required class="input-field">
+                        <select id="conceptoPago" required class="input-field" onchange="toggleMesPago()">
                             <option value="Mensualidad">Mensualidad</option>
                             <option value="Inscripción">Inscripción</option>
                             <option value="Torneo">Torneo</option>
                             <option value="Uniforme">Uniforme</option>
+                        </select>
+                    </div>
+                    <div id="campoMesPago" style="display: block;">
+                        <label style="display: block; font-weight: 600; margin-bottom: 0.5rem; color: #374151;">
+                            <i class="fas fa-calendar-alt"></i> Mes de Pago
+                        </label>
+                        <select id="mesPago" required class="input-field">
+                            <option value="">Seleccionar mes...</option>
+                            <option value="Enero">Enero</option>
+                            <option value="Febrero">Febrero</option>
+                            <option value="Marzo">Marzo</option>
+                            <option value="Abril">Abril</option>
+                            <option value="Mayo">Mayo</option>
+                            <option value="Junio">Junio</option>
+                            <option value="Julio">Julio</option>
+                            <option value="Agosto">Agosto</option>
+                            <option value="Septiembre">Septiembre</option>
+                            <option value="Octubre">Octubre</option>
+                            <option value="Noviembre">Noviembre</option>
+                            <option value="Diciembre">Diciembre</option>
                         </select>
                     </div>
                     <div>
@@ -3354,13 +3374,30 @@
                 alumnos.map(a => `<option value="${a.id}">${a.nombre} - ${a.categoria}</option>`).join('');
         }
 
+        function toggleMesPago() {
+            const concepto = document.getElementById('conceptoPago').value;
+            const campoMes = document.getElementById('campoMesPago');
+            const selectMes = document.getElementById('mesPago');
+
+            if (concepto === 'Mensualidad') {
+                campoMes.style.display = 'block';
+                selectMes.required = true;
+            } else {
+                campoMes.style.display = 'none';
+                selectMes.required = false;
+                selectMes.value = '';
+            }
+        }
+
         function registrarPago(event) {
             event.preventDefault();
 
+            const concepto = document.getElementById('conceptoPago').value;
             const pago = {
                 id: Date.now(),
                 alumnoId: document.getElementById('alumnoSelect').value,
-                concepto: document.getElementById('conceptoPago').value,
+                concepto: concepto,
+                mes: concepto === 'Mensualidad' ? document.getElementById('mesPago').value : null,
                 monto: document.getElementById('montoPago').value,
                 fecha: new Date().toISOString()
             };
@@ -3371,16 +3408,19 @@
             actualizarEstadisticas();
             initCharts();
             closeModal('modalRegistrarPago');
-            showNotification('💰 Pago registrado exitosamente');
 
+            // Resetear formulario
             event.target.reset();
+            document.getElementById('campoMesPago').style.display = 'block';
 
-            // Preguntar si quiere imprimir recibo
+            // Mostrar notificación y preguntar si quiere registrar otro
+            mostrarNotificacion('💰 Pago registrado exitosamente');
+
             setTimeout(() => {
-                if (confirm('¿Deseas imprimir el recibo de pago?')) {
-                    imprimirRecibo(pago.id);
+                if (confirm('✅ Pago registrado correctamente.\n\n¿Deseas registrar otro pago?')) {
+                    openModal('modalRegistrarPago');
                 }
-            }, 500);
+            }, 800);
         }
 
         // Función para animar contadores
